@@ -15,11 +15,12 @@
 	<description>Demo project for Spring Boot in AWS</description>
 	<properties>
 		<java.version>1.8</java.version>
+		<spring.framework.version>5.3.8</spring.framework.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>
@@ -32,12 +33,8 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>5.1.8.RELEASE</version>
-		</dependency>
+		</dependency>		
+		
 	</dependencies>
 
 	<build>
@@ -46,6 +43,29 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			<plugin>
+			  	<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>default-war</id>
+						<phase>none</phase>
+					</execution>
+					<execution>
+						<id>war-exploded</id>
+						<configuration>
+							<webappDirectory>target/deploy</webappDirectory>
+							<archiveClasses>true</archiveClasses>
+						</configuration>
+						<phase>prepare-package</phase>
+						<goals>
+						 	<goal>exploded</goal>
+					    </goals>
+					</execution>
+				</executions>
+			</plugin>
+			
 		</plugins>
 	</build>
 
