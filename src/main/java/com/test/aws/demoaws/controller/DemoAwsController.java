@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.*;
 public class DemoAwsController {
     @GetMapping("/hola")
     public String saludar() {
-        return "Hola Javero Omar !!! 🚀";
+        return "Hola Javero Omar !!!";
     }
 }
