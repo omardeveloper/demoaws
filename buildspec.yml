@@ -1,16 +1,20 @@
 version: 0.2
 phases:
-  pre_build:
-    commands:
+  install:
+    runtime-versions:
+      java: openjdk8
+      commands:
+      - echo "install"
+    pre_build:
+      commands:
       - echo "Entered the pre-build phase"
-  build:
-    commands:
+    build:
+      commands:      
+      - mvn package
       - echo "Entered build phase"
-      - mvn clean prepare-package war:exploded
-  post_build:
-    commands:
+    post_build:
+      commands:
       - echo "Entered the post-build phase"
-      - mv target/deploy ./
 artifacts:
   files:
-    - deploy/**/*
+    - target\demoaws-0.0.1-SNAPSHOT.jar
